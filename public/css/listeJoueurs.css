@@ -1,0 +1,11 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url("img-bg.jpg");
+}
+
+#container{
+    display: inline;
+}

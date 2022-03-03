@@ -1,0 +1,45 @@
+{
+    "users":[
+        {
+            "nom":"Nico",
+            "prenom":"Coni",
+            "login":"joueur@gmail.com",
+            "password":"joueur",
+            "role":"ROLE_JOUEUR",
+            "score":10
+        },
+        {
+            "nom":"Dieng",
+            "prenom":"RPD",
+            "login":"admin@gmail.com",
+            "password":"admin",
+            "role":"ROLE_ADMIN",
+            "score":0
+        },
+        {
+            "nom":"MTT",
+            "prenom":"TALL",
+            "login":"joueur@gmail.com",
+            "password":"joueur",
+            "role":"ROLE_JOUEUR",
+            "score":15
+        },
+        {
+            "nom":"Sow",
+            "prenom":"Idrissa",
+            "login":"joueur@gmail.com",
+            "password":"joueur",
+            "role":"ROLE_JOUEUR",
+            "score":14
+        }
+    ]
+
+
+
+
+
+
+
+
+
+}
