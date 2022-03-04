@@ -12,7 +12,7 @@ $btn = isset($_GET['btn']) ? $_GET['btn']: '';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?=PATH_PUBLIC."css".DIRECTORY_SEPARATOR."style.accueil.css"?>">
+    <link rel="stylesheet" href="<?=WEB_ROOT."css".DIRECTORY_SEPARATOR."style.accueil.css"?>">
     <title>Login</title>
     <style>
         .active{
@@ -29,7 +29,7 @@ $btn = isset($_GET['btn']) ? $_GET['btn']: '';
    <div class="container">
         <div class="head">
             <h3>CRÉER ET PARAMÉTRER VOS QUIZZ</h3>
-            <a href="<?=WEBROOT."?controller=securite&action=deconnexion"?>" class="deconnexion">Déconnexion</a>
+            <a href="<?=WEB_ROOT."?controller=securite&action=deconnexion"?>" class="deconnexion">Déconnexion</a>
         </div>
         <?php if (is_joueur()) {?> <h1>BIENVENUE</h1> <?php } ?>
         <?php if (is_admin()) {?>
@@ -37,24 +37,24 @@ $btn = isset($_GET['btn']) ? $_GET['btn']: '';
             <div class="navbar">
                 <div class="headnav">
                     <div class="headnav-img"><img src="/public/img/khf.jpg" alt="" width="50px" height="50px"></div>
-                    
+                    <div><?= $_SESSION[KEY_USER_CONNECT]['prenom']." ".$_SESSION[KEY_USER_CONNECT]['nom']; ?></div>
                 </div>
                 <div class="corpsnav">  
                     <ul>
                         <li class="li">
-                            <span> <a class="a <?= $btn=='lq' ? 'active': '' ?>" href="<?=WEBROOT."?controller=user&action=liste&btn=lq"?>">Liste des Questions</a></span>
+                            <span> <a class="a <?= $btn=='lq' ? 'active': '' ?>" href="<?=WEB_ROOT."?controller=user&action=liste&btn=lq"?>">Liste des Questions</a></span>
                             <img src="img/ic-liste.png" alt="">
                         </li>
                         <li class="li">
-                        <span><a class="a <?= $btn=='ca' ? 'active': '' ?>" href="<?=WEBROOT."?controller=user&action=liste&btn=ca"?>" >Créer Admin</a></span>
+                        <span><a class="a <?= $btn=='ca' ? 'active': '' ?>" href="<?=WEB_ROOT."?controller=user&action=liste&btn=ca"?>" >Créer Admin</a></span>
                             <img src="img/ic-ajout.png" alt="">
                         </li>
                         <li class="li">
-                        <span><a class="a <?= $btn=='j' ? 'active': '' ?>" href="<?=WEBROOT."?controller=user&action=liste&btn=j"?>" >Liste des joueurs</a></span>
+                        <span><a class="a <?= $btn=='j' ? 'active': '' ?>" href="<?=WEB_ROOT."?controller=user&action=liste&btn=j"?>" >Liste des joueurs</a></span>
                             <img src="img/ic-liste.png" alt="">
                         </li>
                         <li class="li">
-                        <span><a href="<?=WEBROOT."?controller=user&action=liste&btn=cq"?>" class="a <?= $btn=='cq' ? 'active': '' ?>">Créer Questions</a></span>
+                        <span><a href="<?=WEB_ROOT."?controller=user&action=liste&btn=cq"?>" class="a <?= $btn=='cq' ? 'active': '' ?>">Créer Questions</a></span>
                             <img src="img/ic-ajout.png" alt="">
                         </li>
                        

@@ -1,3 +1,8 @@
+const pwd=document.getElementById('password');
+const pass=document.getElementById('pass');
+const btn=document.getElementById('btn')
+
+const mail=document.getElementById('email');
 
 
 function validateEmail(email) {
@@ -29,25 +34,26 @@ if(paswd.test(inputtxt.value)) {
   }
 }  
 
-const mail=document.getElementById('email');
-
 mail.addEventListener('input',() =>{
   if(validateEmail(mail.value)) {
-
-    mail.style.border= '4px solid green';
+    log.style.border= '4px solid green';
   }else{
-    mail.style.border='4px solid red';
+    log.style.border='4px solid red';
   }
+
+  pwd.addEventListener('input',()=>{
+    if(CheckPassword(pwd)){
+      pass.style.border= '4px solid green';
+      btn.removeAttribute('disabled')
+    }else{
+     pass.style.border='4px solid red';
+    }
+  })
 });
 
-const pwd=document.getElementById('password');
-pwd.addEventListener('input',()=>{
-  if(CheckPassword(pwd)){
-    pwd.style.border= '4px solid green';
-  }else{
-    pwd.style.border='4px solid red';
-  }
-})
+
+
+
 
 
 

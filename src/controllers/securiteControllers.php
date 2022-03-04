@@ -22,10 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         if ($_REQUEST['action'] == 'connexion') {
             // require_once(PATH_VIEWS ."users/accueil.html.php");
             require_once(PATH_VIEWS . "securite/connexion.html.php");
-        } elseif ($_REQUEST['action'] == 'accueil') {
-            require_once(PATH_VIEWS . "users/accueil.html.php");
         } elseif ($_REQUEST['action'] == 'deconnexion') {
-            // logout();
+            logout();
             require_once(PATH_VIEWS . "securite/connexion.html.php");
         } else {
             require_once(PATH_VIEWS . "securite/connexion.html.php");

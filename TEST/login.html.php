@@ -1,9 +1,10 @@
 <!-- Vue de connexion -->
 <?php 
-   if (isset($_SESSION[KEY_ERROR])) {
-    $errors = $_SESSION[KEY_ERROR];
-    unset($_SESSION[KEY_ERROR]);
-}    
+    require_once(PATH_VIEW."include".DIRECTORY_SEPARATOR."header.inc.html.php");
+    if(isset($_SESSION[KEY_ERRORS])){
+        $errors = $_SESSION[KEY_ERRORS];
+        unset($_SESSION[KEY_ERRORS]);
+    }    
 
     function vers(string $ctr, string $action){
        echo "<input type='hidden' name='controller' value='$ctr'>
@@ -18,7 +19,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= PATH_PUBLIC . "css" . DIRECTORY_SEPARATOR . "style.css" ?>">
+    <link rel="stylesheet" href="<?=WEB_ROOT."css".DIRECTORY_SEPARATOR."style.connexion.css"?>">
     <title>Login</title>
 </head>
 
@@ -29,7 +30,7 @@
     </div>
     <div class="main">
         <div class="container">
-            <form action="<?=WEBROOT?>" method="POST" class="form" id="form">
+            <form action="<?=WEB_ROOT?>" method="POST" class="form" id="form">
                 <div class="entete">
                     <h5>Login form</h5>
                     <p> <a href="#">X</a> </p>
@@ -59,7 +60,7 @@
                 </div>
                 <div class="footer">
                     <button type="submit" value="connexion" name="connexion" disabled  id="btn">Connexion</button>
-                    <a href="<?= WEBROOT."?controller=securite&action=inscription" ?>" class="inscrire">S'inscrire pour jouer?</a>
+                    <a href="<?= WEB_ROOT."?controller=securite&action=inscription" ?>" class="inscrire">S'inscrire pour jouer?</a>
                 </div>
 
             </form>
@@ -68,7 +69,7 @@
    
  
     
-    <script src="<?=PATH_PUBLIC."js".DIRECTORY_SEPARATOR."script.js" ?>"></script>
+    <script src="<?=WEB_ROOT."js".DIRECTORY_SEPARATOR."script.js"?>"></script>
 </body>
 
 
