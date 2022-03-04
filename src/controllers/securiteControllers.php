@@ -18,10 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
  */
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if (isset($_REQUEST['action'])) {
-        // die("ok");
         if ($_REQUEST['action'] == 'connexion') {
             // require_once(PATH_VIEWS ."users/accueil.html.php");
             require_once(PATH_VIEWS . "securite/connexion.html.php");
+        } elseif ($_REQUEST['action'] == 'accueil') {
+            require_once(PATH_VIEWS . "users/accueil.html.php");
         } elseif ($_REQUEST['action'] == 'deconnexion') {
             logout();
             require_once(PATH_VIEWS . "securite/connexion.html.php");
@@ -51,8 +52,8 @@ function connexion(string $login, string $password): void
     if (count($errors) == 0) {
         $userConnect = find_user_login_password($login, $password);
         if (count($userConnect) != 0) {
-            header("location:" . PATH_PUBLIC . "?controller=securite&action=accueil");
             $_SESSION[USER_KEY] = $userConnect;
+            header("location:" . PATH_PUBLIC . "?controller=securite&action=accueil");
             exit();
         } else {
             $errors['connexion'] = "Login ou Mot de passe incorrect";
