@@ -3,9 +3,10 @@ include_once(PATH_SRC."models".DIRECTORY_SEPARATOR."userModel.php");
 if($_SERVER['REQUEST_METHOD']=="POST"){
     if(isset($_POST['action'])){
         if ($_POST['action']="accueil") {
-            
+            header("location:".PATH_PUBLIC."?controller=securite&action=accueil");
+ 
         }
-        echo "bonjour";
+        // echo "bonjour";
      }
 }
 
