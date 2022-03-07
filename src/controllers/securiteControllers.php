@@ -23,7 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             require_once(PATH_VIEWS . "securite/connexion.html.php");
         } elseif ($_REQUEST['action'] == 'accueil') {
             require_once(PATH_VIEWS . "users/accueil.html.php");
-        } elseif ($_REQUEST['action'] == 'deconnexion') {
+        }elseif ($_REQUEST['action'] == 'liste.joueur'){
+            require_once(PATH_VIEWS . "users/accueil.html.php");  
+        }elseif($_REQUEST['action'] == 'inscription'){
+            require_once(PATH_VIEWS . "users/inscription.html.php");    
+        }
+         elseif ($_REQUEST['action'] == 'deconnexion') {
             logout();
             require_once(PATH_VIEWS . "securite/connexion.html.php");
         } else {
@@ -75,4 +80,8 @@ function logout(): void
     session_destroy();
     header("location:" . PATH_PUBLIC);
     exit();
+}
+
+function ajoutIformations(){
+
 }

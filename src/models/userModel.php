@@ -18,4 +18,5 @@ function find_users(string $role):array{
     $result[]= $user;
     }
     return $result;
+   
     }

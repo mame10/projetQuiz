@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             exit();
         } elseif ($_GET['action'] == "accueil") {
             require_once(PATH_VIEWS . "users" . DIRECTORY_SEPARATOR . "accueil.html.php");
-        } elseif ($_REQUEST['action'] == 'liste.joueur') {
+        } elseif ($_GET['action'] == 'liste.joueur') {
             lister_joueur();
         }
     }

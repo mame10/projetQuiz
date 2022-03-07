@@ -1,45 +1,60 @@
 {
-    "users":[
+    "users": [
         {
-            "nom":"Nico",
-            "prenom":"Coni",
-            "login":"joueur@gmail.com",
-            "password":"joueur123",
-            "role":"ROLE_JOUEUR",
-            "score":10
+            "nom": "Nico",
+            "prenom": "Coni",
+            "login": "joueur@gmail.com",
+            "password": "joueur123",
+            "role": "ROLE_JOUEUR",
+            "score": 10
         },
         {
-            "nom":"Dieng",
-            "prenom":"RPD",
-            "login":"admin@gmail.com",
-            "password":"admin123",
-            "role":"ROLE_ADMIN",
-            "score":0
+            "nom": "Dieng",
+            "prenom": "RPD",
+            "login": "admin@gmail.com",
+            "password": "admin123",
+            "role": "ROLE_ADMIN",
+            "score": 0
         },
         {
-            "nom":"MTT",
-            "prenom":"TALL",
-            "login":"joueur@gmail.com",
-            "password":"joueur",
-            "role":"ROLE_JOUEUR",
-            "score":15
+            "nom": "MTT",
+            "prenom": "TALL",
+            "login": "joueur@gmail.com",
+            "password": "joueur1234",
+            "role": "ROLE_JOUEUR",
+            "score": 15
         },
         {
-            "nom":"Sow",
-            "prenom":"Idrissa",
-            "login":"joueur@gmail.com",
-            "password":"joueur",
-            "role":"ROLE_JOUEUR",
-            "score":14
+            "nom": "Sow",
+            "prenom": "Idrissa",
+            "login": "joueur@gmail.com",
+            "password": "joueur1234",
+            "role": "ROLE_JOUEUR",
+            "score": 14
+        },
+        {
+            "nom": "Diop",
+            "prenom": "Awa",
+            "login": "admin@gmail.com",
+            "password": "admin123",
+            "role": "ROLE_ADMIN",
+            "score": 0
+        },
+        {
+            "nom": "seck",
+            "prenom": "aldemba",
+            "login": "seck@gmail.com",
+            "password": "joueur1234",
+            "role": "ROLE_JOUEUR",
+            "score": 20
+        },
+        {
+            "nom": "BD",
+            "prenom": "Cheikh",
+            "login": "bd@gmail.com",
+            "password": "joueur1234",
+            "role": "ROLE_JOUEUR",
+            "score": 18
         }
     ]
-
-
-
-
-
-
-
-
-
 }

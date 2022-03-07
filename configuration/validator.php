@@ -20,12 +20,15 @@ $errors[$key]=$message;
 //         $lowercase = preg_match('@[a-z]@', $password);
 //         $specialChars = preg_match('@[^\w]@', $password);
        
-//         if(strlen($password) < 4 || !$number || !$uppercase || !$lowercase || !$specialChars) {
+//         if(strlen($password) < 6 || !$number || !$uppercase || !$lowercase || !$specialChars) {
 //           $errors[$key] = $message;
 //         }
 //}
 function valid_password(string $key,string $password,array &$errors,$message="password invalid"):void{
-  if(!filter_var($password,FILTER_VALIDATE_EMAIL)){
-  $errors[$key]=$message;
-  }
+  $uppercase = preg_match('@[A-Z]@', $password);
+  $lowercase = preg_match('@[a-z]@', $password);
+  $number = preg_match('@[0-9]@', $password);
+  if(strlen($password) < 6 || !$number || !$uppercase || !$lowercase ) {
+       $errors[$key] = $message;
+         }
   }
