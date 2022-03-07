@@ -21,11 +21,9 @@ body {
     justify-content: space-between;
 }
 .header{
-    /* margin-top: -10%; */
 width: 100%;
 text-align: center;
 display: flex;
-/* margin-top: -13%; */
 background-color: #000000ed;
 color: white;
 max-height: 10vh;
@@ -58,15 +56,7 @@ height: 90%;
 }
 
 
-/* 
-input{
-    height: 10rem;
-} */
-
 h5 {
-    /* display: flex; */
-    /* text-align: center; */
-    /* justify-content: center; */
     margin: 0 0 3px;
     font-size: 2rem;
 }
@@ -80,12 +70,7 @@ h5 {
     justify-content: space-evenly;
 }
 
-
-
-
-
 .form-control {
-    /* margin-bottom: 10px; */
     padding-bottom: 20px;
     position: relative;
     height: 11%;
@@ -112,7 +97,6 @@ h5 {
     border-color: #777;
 }
 
-
 /* Le form-control qui a en meme temps la class success */
 
 .form-control.success input {
@@ -131,12 +115,7 @@ h5 {
     position: absolute;
     bottom: 0;
     left: 0;
-    visibility: hidden;
-    font-size: 7px;
-}
-
-.form-control.error small {
-    visibility: visible;
+    font-size: 0.7em;
 }
 
 .form .button {
@@ -162,13 +141,12 @@ h5 {
 .element a {
     text-decoration: none;
     font-size: 12px;
-    /* border-radius: 5px solid #51bfd0; */
     background-color: #51bfd0;
     color: white;
 }
 
 .element small {
-    font-size: 15px;
+    font-size: 1.7em;
 }
 
 .gray {
@@ -178,15 +156,17 @@ h5 {
 
 .avatar {
     display: flex;
-    width: 27%;
-    height: 45%;
+    width: 20vw;
+    height: 30vh;
     padding-top: 3%;
+    border: 2px solid #39ddd6;
+    border-radius: 50%
 }
 
-.image {
-    display: flex;
-    width: 80%;
-    height: 87%;
-    border: 2px solid #39ddd6;
+.avatar img{
+    width: 98%;
+    height: 99%;
     border-radius: 50%;
 }
+
+

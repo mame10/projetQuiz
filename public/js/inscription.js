@@ -33,14 +33,14 @@ function CheckPassword(inputtxt) {
 
 
 prn.addEventListener('input', () => {
-  if ((!letters.test(prn.value)) || checkLength(prn, 3)) {
+  if ((!letters.test(prn.value)) || checkLength(prn, 2)) {
     prn.style.border = " 4px solid red";
   } else {
     prn.style.border = " 4px solid green";
   }
 
   nom.addEventListener('input', () => {
-    if ((!letters.test(nom.value)) || checkLength(nom, 3)) {
+    if ((!letters.test(nom.value)) || checkLength(nom, 2)) {
       nom.style.border = " 4px solid red";
     } else {
       nom.style.border = " 4px solid green";

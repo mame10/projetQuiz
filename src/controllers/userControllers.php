@@ -17,7 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             exit();
         } elseif ($_GET['action'] == "accueil") {
             require_once(PATH_VIEWS . "users" . DIRECTORY_SEPARATOR . "accueil.html.php");
+
         } elseif ($_GET['action'] == 'liste.joueur') {
+    
             lister_joueur();
         }
     }
@@ -32,27 +34,3 @@ function lister_joueur()
     $content_for_template = ob_get_clean();
     require_once(PATH_VIEWS . "users" . DIRECTORY_SEPARATOR . "accueil.html.php");
 }
-
-        // if($_SERVER['REQUEST_METHOD']=="GET"){
-        //     if(isset($_GET['action'])){
-        //     if ($_GET['action']=="accueil") {
-        //     $first_lien="Dashboard";
-        //     $sub_lien="Home";
-        //         if(isset($_GET['view'])){
-        //                 switch ($variable) {
-        //                 case 'liste.joueur':
-        //                     lister_joueur();
-        //                  //ob_start();
-        //                 require_once(PATH_VIEWS."users".DIRECTORY_SEPARATOR."listeJoueur.html.php");
-        //                  //$content_for_template= ob_get_clean();
-        //              break;
-        //          }
-        //     }else{
-        //     ob_start();
-        //     $data=lister_joueur();
-        //     require_once(PATH_VIEWS."users".DIRECTORY_SEPARATOR."listeJoueur.html.php");
-        //     $content_for_template= ob_get_clean();
-        //     }
-        //     require_once(PATH_VIEWS."users".DIRECTORY_SEPARATOR."accueil.html.php");
-        //             }
-        //      }

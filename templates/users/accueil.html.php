@@ -37,26 +37,26 @@ $btn = isset($_GET['btn']) ? $_GET['btn'] : '';
       <div class="corps">
         <div class="navbar">
           <div class="headnav">
-            <div class="headnav-img"><img src=PATH_PUBLIC."img/th" alt="" width="50px" height="50px"></div>
+            <div class="headnav-img"></div>
 
           </div>
           <div class="corpsnav">
             <ul>
               <li class="li">
-                <span> <a class="a <?= $btn == 'lq' ? 'active' : '' ?>" href="<?= WEBROOT . "?controller=user&action=liste&btn=lq" ?>">Liste des Questions</a></span>
+                <span> <a class="a" href="<?= WEBROOT . "?controller=user&action=liste" ?>">Liste des Questions</a></span>
                 <img src="img/ic-liste.png" alt="">
               </li>
               <li class="li">
-                <span><a class="a <?= $btn == 'ca' ? 'active' : '' ?>" href="<?= WEBROOT . "?controller=user&action=liste&btn=ca" ?>">Créer Admin</a></span>
+                <span><a class="a" href="<?= WEBROOT . "?controller=user&action=liste" ?>">Créer Admin</a></span>
                 <img src="img/ic-ajout.png" alt="">
               </li>
               <li class="li">
                 <span>
-                  <a class="a <?= $btn == 'j' ? 'active' : '' ?>" href="<?= WEBROOT . "?controller=user&action=liste.joueur" ?>">Liste des joueurs</a></span>
+                  <a class="a" href="<?= WEBROOT . "?controller=user&action=liste.joueur" ?>">Liste des joueurs</a></span>
                 <img src="img/ic-liste.png" alt="">
               </li>
               <li class="li">
-                <span><a href="#" class="a <?= $btn == 'cq' ? 'active' : '' ?>">Créer Questions</a></span>
+                <span><a href="#" class="a">Créer Questions</a></span>
                 <img src="img/ic-ajout.png" alt="">
               </li>
 

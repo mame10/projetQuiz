@@ -16,6 +16,7 @@ margin: 0;
     margin: 2% 6% 2% 6%;
     box-shadow: 5px 5px 5px 5px rgba(8, 4, 8, 0.2);
     width: 90%;
+    z-index: 1;
 }
 .header{
     /* margin-top: -10%; */
@@ -152,6 +153,7 @@ border-radius: 8px;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+    z-index: -1;
 }
 .suivant input{
     margin-right: 3.3%;

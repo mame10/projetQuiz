@@ -30,32 +30,46 @@
         <div class="container">
             <form action="<?=WEBROOT?>" method="POST" class="form" id="form">
                 <h5>S'inscrire</h5>
+                <?php if(isset($errors['connexion'])){ ?>
+                    <p style="color: red"> <?=$errors['connexion'];?> </p>
+                <?php } ?>   
                 <small class="gray">Pour tester votre niveau de culture generale</small>
                 <?php vers("securite", "inscription") ?> 
+                
                 <div class="form-control" id="second">
                     <!-- <label for="username">Prenom</label> -->
                     <input id="second_name" name="prenom" type="text" placeholder="Entrer votre prenom">
-                    <small>Error Message</small>
+                    <?php if(isset($errors['prenom'])){ ?>
+                    <small style="color: red"> <?=$errors['prenom'];?></small>
+                    <?php } ?>  
                 </div>
                 <div class="form-control" id="first_name">
                     <!-- <label for="username">Nom</label> -->
                     <input id="username" name="nom" type="text" placeholder="Entrer votre nom">
-                    <small>Error Message</small>
+                    <?php if(isset($errors['nom'])){ ?>
+                    <small style="color: red"> <?=$errors['nom'];?></small>
+                    <?php } ?> 
                 </div>
                 <div class="form-control" id="log">
                     <!-- <label for="email">Login</label> -->
                     <input id="email" name="login" type="text" placeholder="Entrer votre login">
-                    <small>Error Message</small>
+                    <?php if(isset($errors['login'])){ ?>
+                    <small style="color: red"> <?=$errors['login'];?></small>
+                    <?php } ?> 
                 </div>
                 <div class="form-control" id="password">
                     <!-- <label for="password">Password</label> -->
                     <input id="pass1" name="password" type="password" placeholder="Entrer votre password">
-                    <small>Error Message</small>
+                    <?php if(isset($errors['password'])){ ?>
+                    <small style="color: red"> <?=$errors['password'];?></small>
+                    <?php } ?> 
                 </div>
                 <div class="form-control" id="password2">
                     <!-- <label for="password2">Confirme password</label> -->
                     <input id="pass2" name="password2" type="password" placeholder="Confirmer votre password">
-                    <small>Error Message</small>
+                    <?php if(isset($errors['password2'])){ ?>
+                    <small style="color: red"> <?=$errors['password2'];?></small>
+                    <?php } ?> 
                 </div>
                 <div class="element">
                     <small>Avatar</small>
@@ -65,9 +79,8 @@
                 <!-- <button>submit</button> -->
             </form>
             <div class="avatar">
-                <div class="image">
-                    <img src="img/userperso.jpg" alt="" width="180px" height="180px"> 
-                </div>
+                
+                    <img src="img/userperso.jpg" alt="">
 
             </div>
         </div>
