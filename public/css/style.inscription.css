@@ -1,14 +1,9 @@
-:root {
-    /* Declaration des variables en css */
-    --success-color: #2ecc71;
-    --error-color: #e74c3c;
-}
 
 * {
     box-sizing: border-box;
 }
 
-body {
+.body {
     background-image: url('../img/img-bg.jpg');
     background-size: 100% 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,7 +15,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
 }
-.header{
+.header-inscr{
 width: 100%;
 text-align: center;
 display: flex;
@@ -29,21 +24,21 @@ color: white;
 max-height: 10vh;
 
 }
-.header i{
+.header-inscr i{
     display: flex;
 width: 7%;
 }
-.header i img{
+.header-inscr i img{
     height: 100%;
 }
-.main{
+.main-inscr{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 height: 90%;
 }
-.container {
+.container-inscr {
     display: flex;
     height: 80vh;
     background-color: #fff;
@@ -56,12 +51,12 @@ height: 90%;
 }
 
 
-h5 {
+.h5-inscr {
     margin: 0 0 3px;
     font-size: 2rem;
 }
 
-.form {
+.form-inscr {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -70,19 +65,19 @@ h5 {
     justify-content: space-evenly;
 }
 
-.form-control {
+.form-control-inscr {
     padding-bottom: 20px;
     position: relative;
     height: 11%;
 }
 
-.form-control label {
+.form-control-inscr label {
     color: #777;
     display: block;
     margin-bottom: 5px;
 }
 
-.form-control input {
+.form-control-inscr input {
     border: 2px solid #f0f0f0;
     border-radius: 4px;
     display: block;
@@ -93,25 +88,25 @@ h5 {
     box-sizing: 2px 2px 10px rgba(0, 0, 0,0.3);
 }
 
-.form-control input:focus {
+.form-control-inscr input:focus {
     outline: O;
     border-color: #777;
 }
 
-/* Le form-control qui a en meme temps la class success */
+/* Le form-control-inscr qui a en meme temps la class success */
 
-.form-control.success input {
+.form-control-inscr.success input {
     border-color: var(--success-color);
 }
 
 
-/* Le form-control qui a en meme temps la class error */
+/* Le form-control-inscr qui a en meme temps la class error */
 
-.form-control.error input {
+.form-control-inscr.error input {
     border-color: var(--error-color);
 }
 
-.form-control small {
+.form-control-inscr small {
     color: var(--error-color);
     position: absolute;
     bottom: 0;
@@ -119,7 +114,7 @@ h5 {
     font-size: 0.7em;
 }
 
-.form .button {
+.form-inscr .button {
     cursor: pointer;
     background-color: #51bfd0;
     border: 2px solid #51bfd0;
@@ -133,29 +128,29 @@ h5 {
     width: 40%;
 }
 
-.element {
+.element-inscr {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.element a {
+.element-inscr a {
     text-decoration: none;
     font-size: 12px;
     background-color: #51bfd0;
     color: white;
 }
 
-.element small {
+.element-inscr small {
     font-size: 1.7em;
 }
 
-.gray {
+.gray-inscr {
     font-size: 1rem;
     color: gray;
 }
 
-.avatar {
+.avatar-inscr {
     display: flex;
     width: 20vw;
     height: 30vh;
@@ -164,7 +159,7 @@ h5 {
     border-radius: 50%
 }
 
-.avatar img{
+.avatar-inscr img{
     width: 98%;
     height: 99%;
     border-radius: 50%;

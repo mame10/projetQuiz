@@ -33,7 +33,9 @@ $btn = isset($_GET['btn']) ? $_GET['btn'] : '';
       <a href="<?= WEBROOT . "?controller=securite&action=deconnexion" ?>" class="deconnexion">Déconnexion</a>
     </div>
     <?php if (is_joueur()) { ?> <h1>BIENVENUE</h1> <?php } ?>
-    <?php if (is_admin()) { ?>
+
+    <?php if (is_super_admin()) { ?>
+      
       <div class="corps">
         <div class="navbar">
           <div class="headnav">
@@ -46,10 +48,11 @@ $btn = isset($_GET['btn']) ? $_GET['btn'] : '';
                 <span> <a class="a" href="<?= WEBROOT . "?controller=user&action=liste" ?>">Liste des Questions</a></span>
                 <img src="img/ic-liste.png" alt="">
               </li>
-              <li class="li">
-                <span><a class="a" href="<?= WEBROOT . "?controller=user&action=liste" ?>">Créer Admin</a></span>
-                <img src="img/ic-ajout.png" alt="">
-              </li>
+              <?php if (is_super_admin()) { ?>
+                <li class="li">
+                  <span><a class="a" href="<?= WEBROOT . "?controller=user&action=ajout.admin" ?>">Créer Admin</a></span>
+                  <img src="img/ic-ajout.png" alt="">
+                </li> <?php } ?>
               <li class="li">
                 <span>
                   <a class="a" href="<?= WEBROOT . "?controller=user&action=liste.joueur" ?>">Liste des joueurs</a></span>
@@ -69,7 +72,7 @@ $btn = isset($_GET['btn']) ? $_GET['btn'] : '';
         </div>
         <div class="suivant"> <input type="submit" value="suivant"></div>
       </div>
-     <?php } ?> 
+    <?php } ?>
 </body>
 
 

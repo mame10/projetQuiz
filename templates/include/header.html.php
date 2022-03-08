@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>QUIZZ APP</title>
-<link rel="stylesheet" type="text/css" href="<?=WEBROOT."css/login.css"?>">
-<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap"
-rel="stylesheet">
-<script src="https://kit.fontawesome.com/a81368914c.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="<?=WEBROOT."css/style.css"?>">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?=PATH_PUBLIC."css".DIRECTORY_SEPARATOR."style.inscription.css"?>">
+    <title>Inscription</title>
 </head>
-<body>
+
+<body class="body">
+   

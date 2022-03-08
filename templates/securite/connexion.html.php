@@ -71,5 +71,4 @@
     <script src="<?=PATH_PUBLIC."js".DIRECTORY_SEPARATOR."script.js" ?>"></script>
 </body>
 
-
 </html>

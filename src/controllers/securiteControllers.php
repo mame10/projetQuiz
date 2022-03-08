@@ -7,10 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if (isset($_POST['action'])) {
         if ($_POST['action'] == 'connexion') {
-
             $login = $_POST['login'];
             $password = $_POST['password'];
-
             connexion($login, $password);
         }
         if ($_POST['action'] == 'inscription') {
@@ -19,7 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $login = $_POST['login'];
             $password = $_POST['password'];
             $password2 = $_POST['password2'];
-            $role = ' ROLE_JOUEUR';
+            if(is_connect()){
+                $role='ROLE_ADMIN';
+            }else{
+                $role = ' ROLE_JOUEUR';
+            }
             $score = 0;
             ajoutIformations($prenom, $nom, $login, $password, $password2);
         }
@@ -36,23 +38,22 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         elseif ($_REQUEST['action'] == 'accueil') {
             require_once(PATH_VIEWS . "users/accueil.html.php");
         } 
-        elseif ($_REQUEST['action'] == 'liste.joueur') {
-            require_once(PATH_VIEWS . "users".DIRECTORY_SEPARATOR."accueil.html.php");
-        } 
         elseif ($_REQUEST['action'] == 'inscription') {
-            require_once(PATH_VIEWS . "users".DIRECTORY_SEPARATOR."inscription.html.php");
+            require_once(PATH_VIEWS . "securite".DIRECTORY_SEPARATOR."inscription.html.php");
         } 
+    
         elseif ($_REQUEST['action'] == 'deconnexion') {
             logout();
             require_once(PATH_VIEWS . "securite".DIRECTORY_SEPARATOR."connexion.html.php");
         }
-        elseif($_REQUEST['action'] == 'liste.question'){
-            require_once(PATH_VIEWS . "users".DIRECTORY_SEPARATOR."accueil.html.php");
-        }
+        // elseif($_REQUEST['action'] == 'liste.question'){
+        //     require_once(PATH_VIEWS . "users".DIRECTORY_SEPARATOR."accueil.html.php");
+        // }
         
         else {
             require_once(PATH_VIEWS . "securite".DIRECTORY_SEPARATOR."connexion.html.php");
         }
+        
     } else {
         require_once(PATH_VIEWS . "securite".DIRECTORY_SEPARATOR."connexion.html.php");
     }
@@ -136,7 +137,11 @@ function ajoutIformations($prenom, $nom, $login, $password, $password2)
 
     if (count($errors) == 0) {
         $score = 0;
-        $role = "ROLE_JOUEUR";
+        if(is_connect()){
+            $role='ROLE_ADMIN';
+        }else{
+            $role = ' ROLE_JOUEUR';
+        }
         $tab = [
             "prenom" => $_POST['prenom'],
             "nom" => $_POST['nom'],
@@ -154,7 +159,7 @@ function ajoutIformations($prenom, $nom, $login, $password, $password2)
         require_once(PATH_VIEWS . "securite" . DIRECTORY_SEPARATOR . "connexion.html.php");
     } else {
         $_SESSION[KEY_ERROR] = $errors;
-        require_once(PATH_VIEWS . "users" . DIRECTORY_SEPARATOR . "inscription.html.php");
+        require_once(PATH_VIEWS . "securite" . DIRECTORY_SEPARATOR . "inscription.html.php");
         exit();
     }
 }

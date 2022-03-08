@@ -63,7 +63,6 @@ prn.addEventListener('input', () => {
   cpwd.addEventListener('input', () => {
     if (pwd.value === cpwd.value) {
       cpwd.style.border = '4px solid green';
-      btn.removeAttribute('disabled');
     } else {
       cpwd.style.border = '4px solid red';
     }
