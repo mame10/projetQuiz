@@ -1,39 +1,18 @@
-<?php 
-// require_once(PATH_PUBLIC."include".DIRECTORY_SEPARATOR."header.inc.html.php");
- if(isset($_SESSION[KEY_ERROR])){
- $errors = $_SESSION[KEY_ERROR];
- unset($_SESSION[KEY_ERROR]);
- }    
+<?php
 
-    function vers(string $ctr, string $action){
-        echo "<input type='hidden' name='controller' value='$ctr'>
-         <input type='hidden' name='action' value='$action'>";
-     }
+function vers(string $ctr, string $action){
+    echo "<input type='hidden' name='controller' value='$ctr'>
+     <input type='hidden' name='action' value='$action'>";
+ }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?=PATH_PUBLIC."css".DIRECTORY_SEPARATOR."style.inscription.css"?>">
-    <title>Inscription</title>
-</head>
-
-<body>
-    <div class="header">
-        <i><img src="img/logo-QuizzSA.png"></i>
-        <h4 style="width: 94%;">Le plaisir de jouer</h4>
-    </div>
-    <div class="main">
+<div class="main">
         <div class="container">
             <form action="<?=WEBROOT?>" method="POST" class="form" id="form">
                 <h5>S'inscrire</h5>
                 <?php if(isset($errors['connexion'])){ ?>
                     <p style="color: red"> <?=$errors['connexion'];?> </p>
                 <?php } ?>   
-                <small class="gray">Pour tester votre niveau de culture generale</small>
+                <small class="gray">Pour proposer des Quiz</small>
                 <?php vers("securite", "inscription") ?> 
                 
                 <div class="form-control" id="second">
@@ -53,8 +32,8 @@
                 <div class="form-control" id="log">
                     <!-- <label for="email">Login</label> -->
                     <input id="email" name="login" type="text" placeholder="Entrer votre login">
-                    <?php if(isset($errors['existe'])){ ?>
-                    <small style="color: red"> <?=$errors['existe'];?></small>
+                    <?php if(isset($errors['login'])){ ?>
+                    <small style="color: red"> <?=$errors['login'];?></small>
                     <?php } ?> 
                 </div>
                 <div class="form-control" id="password">
@@ -75,19 +54,14 @@
                     <small>Avatar</small>
                     <a href="#">Choisir un fichier</a>
                 </div>
-                <input type="submit" class="button"  name="inscription" value="inscription" id="btn" disabled>
-                <!-- <button>submit</button> -->
+                <input type="submit" class="button"  name="inscription" value="inscription" id="btn">
             </form>
-            <div class="avatar" name="photo">
+            <div class="avatar">
                 
                     <img src="img/userperso.jpg" alt="">
 
             </div>
         </div>
     </div>
+ <script src="<?=PATH_PUBLIC."js".DIRECTORY_SEPARATOR."inscription.js"?>"></script>
     
-    <script src="<?=PATH_PUBLIC."js".DIRECTORY_SEPARATOR."inscription.js"?>"></script>
-</body>
-
-
-</html>

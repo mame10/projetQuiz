@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     
             lister_joueur();
         }
+        
     }
 }
 
@@ -34,3 +35,4 @@ function lister_joueur()
     $content_for_template = ob_get_clean();
     require_once(PATH_VIEWS . "users" . DIRECTORY_SEPARATOR . "accueil.html.php");
 }
+

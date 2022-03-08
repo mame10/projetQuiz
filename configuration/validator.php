@@ -29,12 +29,23 @@ function valid_email(string $key, string $mail, array &$errors, $message = "emai
 //           $errors[$key] = $message;
 //         }
 //}
-function valid_password(string $key, string $password, array &$errors, $message = "password invalid"): void
-{
-  $uppercase = preg_match('@[A-Z]@', $password);
-  $lowercase = preg_match('@[a-z]@', $password);
-  $number = preg_match('@[0-9]@', $password);
-  if (strlen($password) < 6 || !$number || !$uppercase || !$lowercase) {
-    $errors[$key] = $message;
+// function valid_password(string $key, string $password, array &$errors, $message = "password invalid"): void
+// {
+//   $lowercase = preg_match('@[a-z]@', $password);
+//   $number = preg_match('@[0-9]@', $password);
+//   if (strlen($password) < 6 || !$number || !$lowercase) {
+//     $errors[$key] = $message;
+//   }
+// }
+
+function CheckPassword($passwd) {
+  $paw ='/^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9!@#$%^&*]{6,40}+$/' ;
+  if(preg_match($paw,$passwd)) {
+    return true;
+  }else{
+    $errors['password']="mot de passe invalide";
   }
+
 }
+
+

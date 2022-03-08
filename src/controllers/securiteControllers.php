@@ -31,22 +31,30 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if (isset($_REQUEST['action'])) {
         if ($_REQUEST['action'] == 'connexion') {
-            // require_once(PATH_VIEWS ."users/accueil.html.php");
             require_once(PATH_VIEWS . "securite/connexion.html.php");
-        } elseif ($_REQUEST['action'] == 'accueil') {
+        } 
+        elseif ($_REQUEST['action'] == 'accueil') {
             require_once(PATH_VIEWS . "users/accueil.html.php");
-        } elseif ($_REQUEST['action'] == 'liste.joueur') {
-            require_once(PATH_VIEWS . "users/accueil.html.php");
-        } elseif ($_REQUEST['action'] == 'inscription') {
-            require_once(PATH_VIEWS . "users/inscription.html.php");
-        } elseif ($_REQUEST['action'] == 'deconnexion') {
+        } 
+        elseif ($_REQUEST['action'] == 'liste.joueur') {
+            require_once(PATH_VIEWS . "users".DIRECTORY_SEPARATOR."accueil.html.php");
+        } 
+        elseif ($_REQUEST['action'] == 'inscription') {
+            require_once(PATH_VIEWS . "users".DIRECTORY_SEPARATOR."inscription.html.php");
+        } 
+        elseif ($_REQUEST['action'] == 'deconnexion') {
             logout();
-            require_once(PATH_VIEWS . "securite/connexion.html.php");
-        } else {
-            require_once(PATH_VIEWS . "securite/connexion.html.php");
+            require_once(PATH_VIEWS . "securite".DIRECTORY_SEPARATOR."connexion.html.php");
+        }
+        elseif($_REQUEST['action'] == 'liste.question'){
+            require_once(PATH_VIEWS . "users".DIRECTORY_SEPARATOR."accueil.html.php");
+        }
+        
+        else {
+            require_once(PATH_VIEWS . "securite".DIRECTORY_SEPARATOR."connexion.html.php");
         }
     } else {
-        require_once(PATH_VIEWS . "securite/connexion.html.php");
+        require_once(PATH_VIEWS . "securite".DIRECTORY_SEPARATOR."connexion.html.php");
     }
 }
 
@@ -62,7 +70,7 @@ function connexion(string $login, string $password): void
     champ_obligatoire("password", $password, $errors);
     // if (!isset($errors['password'])) {
 
-    //valid_password("password",$password,$errors);
+        CheckPassword($password);
 
     // }
 
@@ -119,7 +127,7 @@ function ajoutIformations($prenom, $nom, $login, $password, $password2)
     }
 
     (valid_email('login', $login, $errors));
-    // (valid_password('password', $password, $errors, $message = "password invalid"));
+    (CheckPassword('password', $password, $errors, $message = "password invalid"));
 
 
     if ($password != $password2) {
@@ -133,8 +141,7 @@ function ajoutIformations($prenom, $nom, $login, $password, $password2)
             "prenom" => $_POST['prenom'],
             "nom" => $_POST['nom'],
             "login" => $_POST['login'],
-            "password" => $_POST['password'],
-            "password2" => $_POST['password2'],
+            "password" => $_POST['password'], 
             "score" => $score,
             "role" => $role
         ];
@@ -142,14 +149,12 @@ function ajoutIformations($prenom, $nom, $login, $password, $password2)
         $dataJson = file_get_contents(PATH_DB);
         $arrayJson = json_decode($dataJson, true);
         $arrayJson['users'][] = $tab;
-        $arr_js = json_encode( $arrayJson);
+        $arr_js = json_encode($arrayJson);
         file_put_contents(PATH_DB, $arr_js);
-        require_once(PATH_VIEWS . "securite".DIRECTORY_SEPARATOR."connexion.html.php");
-    } 
-    else
-     {
+        require_once(PATH_VIEWS . "securite" . DIRECTORY_SEPARATOR . "connexion.html.php");
+    } else {
         $_SESSION[KEY_ERROR] = $errors;
-        require_once(PATH_VIEWS . "users".DIRECTORY_SEPARATOR."inscription.html.php");
+        require_once(PATH_VIEWS . "users" . DIRECTORY_SEPARATOR . "inscription.html.php");
         exit();
     }
 }

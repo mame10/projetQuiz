@@ -65,6 +65,7 @@ $btn = isset($_GET['btn']) ? $_GET['btn'] : '';
         </div>
         <div class="bloc-info">
           <?= isset($content_for_template) ? $content_for_template : '' ?>
+          
         </div>
         <div class="suivant"> <input type="submit" value="suivant"></div>
       </div>
