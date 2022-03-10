@@ -22,14 +22,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $password2 = $_POST['password2'];
             $name_photo = $_FILES['photo']['name'];
             $tmp_name = $_FILES['photo']['tmp_name'];
-
-            if (is_admin()) {
+            $taille=$_FILES['photo']['size'];
+            $ext_file=(explode('.',$name_photo));
+            $ext=strtolower(end($ext_file));
+            
+            if (is_connect()) {
                 $role = ROLE_ADMIN;
+                $score = 0;
             } else {
                 $role = ROLE_JOUEUR;
             }
             $score = 0;
-            ajoutIformations($prenom, $nom, $login, $password, $password2, $name_photo, $tmp_name);
+            ajoutIformations($prenom, $nom, $login, $password, $password2, $name_photo, $tmp_name,$ext);
         }
     }
 }
@@ -114,7 +118,7 @@ function loginExiste(string $login)
 
 
 //ajout infos au fichier json
-function ajoutIformations($prenom, $nom, $login, $password, $password2, $name_photo, $tmp_name)
+function ajoutIformations($prenom, $nom, $login, $password, $password2, $name_photo, $tmp_name,$ext)
 {
     $tab = [];
     $errors = [];
@@ -137,18 +141,21 @@ function ajoutIformations($prenom, $nom, $login, $password, $password2, $name_ph
         $errors['password2'] = "password no conforme";
     }
 
+  //verification de l'extension  
+    $tabExt=['jpg','png','jpeg'];
     if ($name_photo != '') {
-        move_uploaded_file($tmp_name, PATH_UPLOADS . $name_photo);
-        $_SESSION['name_tof'] = $name_photo;
-        $_SESSION['tmp_nam'] = $tmp_name;
+        foreach($tabExt as $exten){
+            if($ext != $exten){
+                $errors['erImg']='image not found';
+                break;
+            }  
+        }      
     }
 
-
-    if (count($errors) == 0) {
-
-        $score = 0;
+    if (count($errors) == 0) {   
         if (is_connect()) {
             $role = 'ROLE_ADMIN';
+            $score = 0;
         } else {
             $role = 'ROLE_JOUEUR';
         }
@@ -167,6 +174,9 @@ function ajoutIformations($prenom, $nom, $login, $password, $password2, $name_ph
         $arrayJson['users'][] = $tab;
         $arr_js = json_encode($arrayJson);
         file_put_contents(PATH_DB, $arr_js);
+        // move de notre image sur notre dossier uploads 
+        move_uploaded_file($tmp_name, PATH_UPLOADS . $name_photo);
+       
         if (is_connect()) {
             require_once(PATH_VIEWS . "users" . DIRECTORY_SEPARATOR . "accueil.html.php");
         } else

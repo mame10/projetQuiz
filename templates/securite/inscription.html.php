@@ -13,7 +13,7 @@ function vers(string $ctr, string $action)
 if (!is_connect()) {
     require_once(PATH_VIEWS . "include" . DIRECTORY_SEPARATOR . "header1.html.php");
 }
-    require_once(PATH_VIEWS . "include" . DIRECTORY_SEPARATOR . "header.html.php")
+require_once(PATH_VIEWS . "include" . DIRECTORY_SEPARATOR . "header.html.php")
 
 ?>
 
@@ -24,10 +24,10 @@ if (!is_connect()) {
             <?php if (isset($errors['connexion'])) { ?>
                 <p style="color: red"> <?= $errors['connexion']; ?> </p>
             <?php } ?>
-            <?php if(is_admin()) {?>    
+            <?php if (is_admin()) { ?>
                 <small class="gray-inscr">Pour tester votre niveau de culture generale</small>
             <?php } ?>
-                <small class="gray-inscr">Pour proposer des Quiz</small>
+            <small class="gray-inscr">Pour proposer des Quiz</small>
             <?php vers("securite", "inscription") ?>
 
             <div class="form-control-inscr" id="second">
@@ -66,21 +66,23 @@ if (!is_connect()) {
                 <?php } ?>
             </div>
             <div class="element-inscr">
-                <input type="file" name="photo" id="image">
+                <input type="file" name="photo" id="image" onchange="uploads(this)">
                 <!-- <a href="#">Choisir un fichier</a> -->
             </div>
-                <input type="submit" class="button" name="inscription" value="inscription" id="btn">
-                <!-- <button>submit</button> -->
+            <input type="submit" class="button" name="inscription" value="inscription" id="btn">
+            <!-- <button>submit</button> -->
         </form>
         <div class="avatar-inscr" name="photo">
             <label for="image">
-                 <img src="img/userperso.jpg" alt="">
+                <img src="img/userperso.jpg" alt="" id="img">
+                <?php if (isset($errors['erImg'])) { ?>
+                    <small style="color: red"> <?= $errors['erImg']; ?></small>
+                <?php } ?>
             </label>
         </div>
     </div>
 </div>
 
 <script src="<?= PATH_PUBLIC . "js" . DIRECTORY_SEPARATOR . "inscription.js" ?>"></script>
-
 <?php
 require_once(PATH_VIEWS . "include" . DIRECTORY_SEPARATOR . "footer.html.php");

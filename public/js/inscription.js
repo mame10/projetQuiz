@@ -5,11 +5,6 @@ const pwd = document.getElementById('pass1');
 const cpwd = document.getElementById('pass2');
 const btn = document.getElementById('btn');
 
-//validation prenom et nom
-var letters = /^[A-Za-z]+$/;
-
-
-
 
 //fonction validation mail
 function validateEmail(email) {
@@ -30,8 +25,8 @@ function CheckPassword(inputtxt) {
   }
 }
 
-
-
+//validation prenom et nom
+var letters = /^[A-Za-z]+$/;
 prn.addEventListener('input', () => {
   if ((!letters.test(prn.value)) || checkLength(prn, 2)) {
     
@@ -71,8 +66,10 @@ prn.addEventListener('input', () => {
     }
   });
 })
-
-
+const input=document.getElementById('img');
+function uploads(photo){
+input.src=window.URL.createObjectURL(photo.files[0]);
+}
 
 
 
