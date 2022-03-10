@@ -1,7 +1,7 @@
 <?php
 function champ_obligatoire(
   string $key,
-  string $data,
+  string|array $data,
   array &$errors,
   string $message = "ce champ est vide"
 ): void {

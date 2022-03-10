@@ -39,8 +39,9 @@ $btn = isset($_GET['btn']) ? $_GET['btn'] : '';
       <div class="corps">
         <div class="navbar">
           <div class="headnav">
-            <div class="headnav-img"></div>
-
+            <div class="headnav-img">
+              <img src="img/ic-ajout.png" alt="">
+            </div>
           </div>
           <div class="corpsnav">
             <ul>
@@ -70,7 +71,7 @@ $btn = isset($_GET['btn']) ? $_GET['btn'] : '';
           <?= isset($content_for_template) ? $content_for_template : '' ?>
           
         </div>
-        <div class="suivant"> <input type="submit" value="suivant"></div>
+          <div class="suivant"> <input type="submit" value="suivant"></div>
       </div>
     <?php } ?>
 </body>

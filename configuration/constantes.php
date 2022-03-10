@@ -14,6 +14,10 @@ define("PATH_DB", ROOT . "data" . DIRECTORY_SEPARATOR . "db.json");
 //chemin sur le dossier public, pour inclusion des images, css et js
 define("PATH_PUBLIC", str_replace("index.php", "", $_SERVER['SCRIPT_NAME']));
 
+define("PATH_UPLOADS", ROOT . "public" . DIRECTORY_SEPARATOR."uploads". DIRECTORY_SEPARATOR);
+
+
+
 
 //Requete GET  et POST
 define("WEBROOT", "http://localhost:3002/");

@@ -57,15 +57,6 @@
             "score": 18
         },
         {
-            "prenom": "mmM",
-            "nom": "mbodj",
-            "login": "mm@mm.com",
-            "password": "passer123",
-            "password2": "passer123",
-            "score": 0,
-            "role": "ROLE_JOUEUR"
-        },
-        {
             "prenom": "messi",
             "nom": "lionel",
             "login": "messi@gmail.com",
@@ -91,28 +82,48 @@
             "role": "ROLE_JOUEUR"
         },
         {
-            "prenom": "mor",
-            "nom": "serigne",
-            "login": "mor@gmail.com",
-            "password": "serignemor10",
-            "score": 0,
-            "role": "ROLE_JOUEUR"
-        },
-        {
             "prenom": "idrissa",
             "nom": "sow",
             "login": "sow@gmail.com",
             "password": "sow10",
             "score": 0,
             "role": "ROLE_JOUEUR"
+        },
+    
+        {
+            "prenom": "pape",
+            "nom": "seck",
+            "login": "pape@gmail.com",
+            "password": "admin100",
+            "score": 0,
+            "role": "ROLE_JOUEUR"
+        },
+        {
+            "prenom": "aldemba",
+            "nom": "seck",
+            "login": "seck10@gmail.com",
+            "password": "aldemba100",
+            "score": 0,
+            "role": "ROLE_JOUEUR",
+            "avatar": "IMG-20210208-WA0001.jpg"
+        },
+        {
+            "prenom": "amina",
+            "nom": "gueye",
+            "login": "amina@gmail.com",
+            "password": "admin100",
+            "score": 0,
+            "role": "ROLE_JOUEUR",
+            "avatar": "IMG-20220222-WA0010.jpg"
         }
+       
     ],
     "questions": [
         {
             "1.": "le capital du senegal",
             "choix": [
                 "Kaolack",
-                "Thi\u00e8s",
+                "Thies",
                 "Dakar"
             ],
             "reponse": [

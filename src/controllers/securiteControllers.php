@@ -1,9 +1,12 @@
 <?php
 include_once(PATH_SRC . "models" . DIRECTORY_SEPARATOR . "userModel.php");
+
+
 /**
  * Traitement des Requetes POST
  */
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $role = '';
 
     if (isset($_POST['action'])) {
         if ($_POST['action'] == 'connexion') {
@@ -17,47 +20,42 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $login = $_POST['login'];
             $password = $_POST['password'];
             $password2 = $_POST['password2'];
-            if(is_connect()){
-                $role='ROLE_ADMIN';
-            }else{
-                $role = ' ROLE_JOUEUR';
+            $name_photo = $_FILES['photo']['name'];
+            $tmp_name = $_FILES['photo']['tmp_name'];
+
+            if (is_admin()) {
+                $role = ROLE_ADMIN;
+            } else {
+                $role = ROLE_JOUEUR;
             }
             $score = 0;
-            ajoutIformations($prenom, $nom, $login, $password, $password2);
+            ajoutIformations($prenom, $nom, $login, $password, $password2, $name_photo, $tmp_name);
         }
     }
 }
+
+
 /**
  * Traitement des Requetes GET
  */
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if (isset($_REQUEST['action'])) {
         if ($_REQUEST['action'] == 'connexion') {
-            require_once(PATH_VIEWS . "securite/connexion.html.php");
-        } 
-        elseif ($_REQUEST['action'] == 'accueil') {
-            require_once(PATH_VIEWS . "users/accueil.html.php");
-        } 
-        elseif ($_REQUEST['action'] == 'inscription') {
-            require_once(PATH_VIEWS . "securite".DIRECTORY_SEPARATOR."inscription.html.php");
-        } 
-    
-        elseif ($_REQUEST['action'] == 'deconnexion') {
+            require_once(PATH_VIEWS . "securite" . DIRECTORY_SEPARATOR . "connexion.html.php");
+        } elseif ($_REQUEST['action'] == 'inscription') {
+            require_once(PATH_VIEWS . "securite" . DIRECTORY_SEPARATOR . "inscription.html.php");
+        } elseif ($_REQUEST['action'] == 'deconnexion') {
             logout();
-            require_once(PATH_VIEWS . "securite".DIRECTORY_SEPARATOR."connexion.html.php");
+            require_once(PATH_VIEWS . "securite" . DIRECTORY_SEPARATOR . "connexion.html.php");
+        } else {
+            require_once(PATH_VIEWS . "securite" . DIRECTORY_SEPARATOR . "connexion.html.php");
         }
-        // elseif($_REQUEST['action'] == 'liste.question'){
-        //     require_once(PATH_VIEWS . "users".DIRECTORY_SEPARATOR."accueil.html.php");
-        // }
-        
-        else {
-            require_once(PATH_VIEWS . "securite".DIRECTORY_SEPARATOR."connexion.html.php");
-        }
-        
     } else {
-        require_once(PATH_VIEWS . "securite".DIRECTORY_SEPARATOR."connexion.html.php");
+        require_once(PATH_VIEWS . "securite" . DIRECTORY_SEPARATOR . "connexion.html.php");
     }
 }
+
+
 
 function connexion(string $login, string $password): void
 {
@@ -69,11 +67,7 @@ function connexion(string $login, string $password): void
     }
 
     champ_obligatoire("password", $password, $errors);
-    // if (!isset($errors['password'])) {
-
-        CheckPassword($password);
-
-    // }
+    CheckPassword($password);
 
     if (count($errors) == 0) {
         $userConnect = find_user_login_password($login, $password);
@@ -94,6 +88,8 @@ function connexion(string $login, string $password): void
     }
 }
 
+
+//fonction pour la deconnexion
 function logout(): void
 {
     $_SESSION[KEY_USER] = array();
@@ -102,6 +98,9 @@ function logout(): void
     header("location:" . PATH_PUBLIC);
     exit();
 }
+
+
+// verification du login dans le fichier json
 function loginExiste(string $login)
 {
     $users = find_data("users");
@@ -112,12 +111,15 @@ function loginExiste(string $login)
     }
 }
 
+
+
 //ajout infos au fichier json
-function ajoutIformations($prenom, $nom, $login, $password, $password2)
+function ajoutIformations($prenom, $nom, $login, $password, $password2, $name_photo, $tmp_name)
 {
     $tab = [];
     $errors = [];
     champ_obligatoire("nom", $nom, $errors, "champ obligatoire");
+    //champ_obligatoire("avatar", $avatar, $errors, "champ obligatoire");
     champ_obligatoire("prenom", $prenom, $errors, "champ obligatoire");
     champ_obligatoire("login", $login, $errors, "champ obligatoire");
     champ_obligatoire("password", $password, $errors, "champ obligatoire");
@@ -135,20 +137,29 @@ function ajoutIformations($prenom, $nom, $login, $password, $password2)
         $errors['password2'] = "password no conforme";
     }
 
+    if ($name_photo != '') {
+        move_uploaded_file($tmp_name, PATH_UPLOADS . $name_photo);
+        $_SESSION['name_tof'] = $name_photo;
+        $_SESSION['tmp_nam'] = $tmp_name;
+    }
+
+
     if (count($errors) == 0) {
+
         $score = 0;
-        if(is_connect()){
-            $role='ROLE_ADMIN';
-        }else{
-            $role = ' ROLE_JOUEUR';
+        if (is_connect()) {
+            $role = 'ROLE_ADMIN';
+        } else {
+            $role = 'ROLE_JOUEUR';
         }
         $tab = [
-            "prenom" => $_POST['prenom'],
-            "nom" => $_POST['nom'],
-            "login" => $_POST['login'],
-            "password" => $_POST['password'], 
+            "prenom" => $prenom,
+            "nom" => $nom,
+            "login" => $login,
+            "password" => $password,
             "score" => $score,
-            "role" => $role
+            "role" => $role,
+            "avatar" => $name_photo
         ];
 
         $dataJson = file_get_contents(PATH_DB);
@@ -156,10 +167,40 @@ function ajoutIformations($prenom, $nom, $login, $password, $password2)
         $arrayJson['users'][] = $tab;
         $arr_js = json_encode($arrayJson);
         file_put_contents(PATH_DB, $arr_js);
-        require_once(PATH_VIEWS . "securite" . DIRECTORY_SEPARATOR . "connexion.html.php");
+        if (is_connect()) {
+            require_once(PATH_VIEWS . "users" . DIRECTORY_SEPARATOR . "accueil.html.php");
+        } else
+            require_once(PATH_VIEWS . "securite" . DIRECTORY_SEPARATOR . "connexion.html.php");
     } else {
-        $_SESSION[KEY_ERROR] = $errors;
-        require_once(PATH_VIEWS . "securite" . DIRECTORY_SEPARATOR . "inscription.html.php");
-        exit();
+        if (is_connect()) {
+            $_SESSION[KEY_ERROR] = $errors;
+            ob_start();
+            require_once(PATH_VIEWS . "securite" . DIRECTORY_SEPARATOR . "inscription.html.php");
+            $content_for_template = ob_get_clean();
+            require_once(PATH_VIEWS . "users" . DIRECTORY_SEPARATOR . "accueil.html.php");
+            exit();
+        } else {
+            $_SESSION[KEY_ERROR] = $errors;
+            require_once(PATH_VIEWS . "securite" . DIRECTORY_SEPARATOR . "inscription.html.php");
+            exit();
+        }
     }
 }
+
+
+ // if (($_FILES['photo']['name'] != "")) {
+    //     $directory = PATH_UPLOADS;
+    //     $file = $_FILES['photo']['name'];
+    //     $path = pathinfo($file);
+    //     $filename = $path['filename'];
+    //     $ext = $path['extension'];
+    //     $temp_name = $_FILES['photo']['tmp_name'];
+    //     $path_filename_ext = $directory . $filename . "." . $ext;
+    //     if (file_exists($path_filename_ext)) {
+    //         $errors['avatar'] = "photo existe";
+    //     } else {
+
+    //         move_uploaded_file($temp_name, $path_filename_ext);
+    //         echo "Congratulations! File Uploaded Successfully.";
+    //     }
+    // }

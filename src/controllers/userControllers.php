@@ -24,11 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         elseif($_REQUEST['action'] == 'ajout.admin'){
            cre_admin();
         }
-        elseif ($_REQUEST['action'] == 'liste.joueur') {
-            require_once(PATH_VIEWS . "users".DIRECTORY_SEPARATOR."accueil.html.php");
-        } 
+        
         elseif ($_REQUEST['action'] == 'inscription') {
             require_once(PATH_VIEWS . "securite".DIRECTORY_SEPARATOR."inscription.html.php");
+        } 
+        elseif ($_REQUEST['action'] == 'liste.joueur') {
+            require_once(PATH_VIEWS . "users".DIRECTORY_SEPARATOR."accueil.html.php");
         } 
     }
 }

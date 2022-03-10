@@ -34,9 +34,11 @@ function CheckPassword(inputtxt) {
 
 prn.addEventListener('input', () => {
   if ((!letters.test(prn.value)) || checkLength(prn, 2)) {
+    
     prn.style.border = " 4px solid red";
   } else {
     prn.style.border = " 4px solid green";
+  
   }
 
   nom.addEventListener('input', () => {
@@ -63,6 +65,7 @@ prn.addEventListener('input', () => {
   cpwd.addEventListener('input', () => {
     if (pwd.value === cpwd.value) {
       cpwd.style.border = '4px solid green';
+      
     } else {
       cpwd.style.border = '4px solid red';
     }
